@@ -8,6 +8,9 @@ import re
 import time
 
 from gradio_client import Client
+import os
+HF_SPACE = os.getenv("HF_SPACE", "Om-2003/steam-game-search-ui")
+
 
 #App
 app = FastAPI(title="Steam Semantic Search API")
