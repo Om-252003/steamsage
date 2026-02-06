@@ -208,3 +208,7 @@ def search_games(req: SearchRequest):
     cleaned.sort(key=lambda x: x.get("similarity_score") or 0, reverse=True)
 
     return cleaned[:top_k]
+
+
+# Required for Vercel
+app = app

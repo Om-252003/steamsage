@@ -1,4 +1,4 @@
 fastapi
-uvicorn
 gradio_client
 pydantic
+python-multipart
