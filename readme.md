@@ -113,7 +113,7 @@ We built a **working semantic search engine** and deployed on Hugging Face.
 
 ### 🔗 Live Model
 
-👉 **[SteamSAGE Semantic Search – Hugging Face App](https://shasta-thermodynamic-glossarially.ngrok-free.dev)**
+👉 **[SteamSAGE Semantic Search – Hugging Face App](https://steamsage.vercel.app/)**
 
 ### 📸 Model Screenshot
 ![Model Screenshot](diagrams/model_screenshot.jpg)
