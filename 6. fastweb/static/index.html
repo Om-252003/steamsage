@@ -668,10 +668,21 @@ async function runSearch() {
               <div class="reason">Matched: ${g.match_reason.join(", ")}</div>
             ` : ""}
 
-            <div class="actions" onclick="event.stopPropagation()">
-              ${g.steam_url ? `<a class="primary" href="${g.steam_url}" target="_blank">View on Steam</a>` : ""}
-              <a class="secondary" href="https://www.youtube.com/results?search_query=${encodeURIComponent((g.name||"") + " gameplay")}" target="_blank">Gameplay</a>
+            <div class="line" style="margin-top:14px;">
+            <div class="actions">
+              ${g.steam_url ? `
+                <a class="primary" href="${g.steam_url}" target="_blank">
+                  View on Steam
+                </a>
+              ` : ""}
+
+              <a class="secondary"
+                href="https://www.youtube.com/results?search_query=${encodeURIComponent((g.name||"") + " gameplay")}"
+                target="_blank">
+                Gameplay
+              </a>
             </div>
+          </div>
           </div>
         </div>
       `;
