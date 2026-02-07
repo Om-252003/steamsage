@@ -550,9 +550,10 @@ function renderDetails(){
     ${genre ? `<div class="line"><strong>Genre:</strong> ${genre}</div>` : ""}
     ${sentiment ? `<div class="line"><strong>Sentiment:</strong> ⭐ ${sentiment}</div>` : ""}
     ${desc ? `<div class="line"><strong>Description:</strong><br>${desc}</div>` : ""}
-    ${g.steam_url ? `<div class="primary"><div class="line"><strong>Steam:</strong> <a href="${g.steam_url}" target="_blank">${g.steam_url}</a></div></div>` : ""}
-    <div class="secondary">
+    ${g.steam_url ? `<div class="line"><div class="primary"><strong>Steam:</strong> <a href="${g.steam_url}" target="_blank">${g.steam_url}</a></div></div>` : ""}
+    
       <div class="line" style="margin-top:12px;">
+        <div class="secondary">
         <a href="https://www.youtube.com/results?search_query=${encodeURIComponent((g.name||"") + " gameplay")}" target="_blank">
           Search gameplay on YouTube →
         </a>
