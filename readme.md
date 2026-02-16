@@ -65,7 +65,7 @@ The clean layer makes the data ready for **Analytics and ML**.
 
 SteamSAGE is designed as a **cloud-native analytics and AI solution**.
 
-![Project Architecture](diagrams/Architecture_Diagram_colored.jpeg)
+![Project Architecture](diagrams/Architecture.jpg)
 
 ### Architecture Overview
 
