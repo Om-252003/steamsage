@@ -18,7 +18,7 @@ HF_SPACE = os.getenv("HF_SPACE", "Om-2003/steam-game-search-ui")
 app = FastAPI(title="Steam Semantic Search API")
 
 
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 
 
