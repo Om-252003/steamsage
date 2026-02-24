@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import List, Optional, Any, Dict
@@ -28,6 +28,13 @@ app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 def serve_frontend():
     with open("static/index.html", "r", encoding="utf-8") as f:
         return f.read()
+
+
+@app.get("/static/styles.css")
+def serve_css():
+    """Serve the CSS file"""
+    with open("static/styles.css", "r", encoding="utf-8") as f:
+        return Response(content=f.read(), media_type="text/css")
 
 
 
