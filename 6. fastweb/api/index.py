@@ -75,6 +75,7 @@ class GameResult(BaseModel):
     short_description: Optional[str] = None
     description: Optional[str] = None
     match_reason: Optional[List[str]] = None
+    ai_reason: Optional[str] = None   
 
 
 class SearchResponse(BaseModel):
@@ -214,7 +215,8 @@ def search_games(req: SearchRequest):
             "screenshots": safe_list(g.get("screenshots")),
             "short_description": g.get("short_description"),
             "description": g.get("description"),
-            "match_reason": reasons
+            "match_reason": reasons,
+            "ai_reason": g.get("ai_reason")   # ← ADD THIS
         })
 
     cleaned.sort(
