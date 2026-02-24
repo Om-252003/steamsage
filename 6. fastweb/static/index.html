@@ -575,22 +575,28 @@ function renderDetails(){
     ${genre ? `<div class="line"><strong>Genre:</strong> ${genre}</div>` : ""}
     ${sentiment ? `<div class="line"><strong>Sentiment Score:</strong>  ${sentiment} / 5 ⭐</div>` : ""}
     ${desc ? `<div class="line"><strong>Description:</strong><br>${desc}</div>` : ""}
+
+    ${g.ai_reason ? `
+      <div class="ai-box">
+        <h3>Why this game?</h3>
+        <p>${g.ai_reason}</p>
+      </div>
+    ` : ""}
+
     <div class="line" style="margin-top:14px;">
-    <div class="actions">
-      ${g.steam_url ? `
-        <a class="primary" href="${g.steam_url}" target="_blank">
-          View on Steam
+      <div class="actions">
+        ${g.steam_url ? `
+          <a class="primary" href="${g.steam_url}" target="_blank">
+            View on Steam
+          </a>
+        ` : ""}
+        <a class="secondary"
+          href="https://www.youtube.com/results?search_query=${encodeURIComponent((g.name||"") + " gameplay")}"
+          target="_blank">
+          Gameplay
         </a>
-      ` : ""}
-
-      <a class="secondary"
-        href="https://www.youtube.com/results?search_query=${encodeURIComponent((g.name||"") + " gameplay")}"
-        target="_blank">
-        Gameplay
-      </a>
+      </div>
     </div>
-  </div>
-
   `;
 }
 
