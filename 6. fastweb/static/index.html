@@ -367,6 +367,46 @@ button:hover{
 .dot.active{
   background: var(--accent2);
 }
+
+.modalBody{
+  display:grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 16px;
+  padding: 16px;
+  overflow:auto;
+}
+
+@media (max-width: 900px){
+  .modalBody{
+    grid-template-columns: 1fr;
+  }
+}
+
+.details{
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.08);
+  padding: 14px;
+  background: rgba(255,255,255,.03);
+}
+
+.details .line{
+  margin: 8px 0;
+  opacity: .92;
+}
+
+.details strong{
+  color: #fff;
+}
+
+.details a{
+  color: var(--accent2);
+  font-weight: 900;
+  text-decoration:none;
+}
+
+.details a:hover{
+  text-decoration: underline;
+}
 </style>
 
 </head>
