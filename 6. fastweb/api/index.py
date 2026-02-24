@@ -7,6 +7,7 @@ from functools import lru_cache
 import re
 import time
 import os
+from pathlib import Path
 
 from gradio_client import Client
 
@@ -16,7 +17,9 @@ HF_SPACE = os.getenv("HF_SPACE", "Om-2003/steam-game-search-ui")
 
 app = FastAPI(title="Steam Semantic Search API")
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+
+BASE_DIR = Path(__file__).resolve().parent
+app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 
 
 @app.get("/", response_class=HTMLResponse)
