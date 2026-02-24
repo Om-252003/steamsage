@@ -6,57 +6,283 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-  :root{
-    --bg1:#1b2838;
-    --bg2:#171a21;
-    --card: rgba(42,71,94,0.55);
-    --accent:#66c0f4;
-    --accent2:#4fc3f7;
-    --text:#c7d5e0;
-    --muted:#9fd3ff;
-    --border: rgba(102,192,244,0.15);
-  }
+:root{
+  --bg1:#1b2838;
+  --bg2:#171a21;
+  --card: rgba(42,71,94,0.55);
+  --accent:#66c0f4;
+  --accent2:#4fc3f7;
+  --text:#c7d5e0;
+  --muted:#9fd3ff;
+  --border: rgba(102,192,244,0.15);
+}
 
-  body {
-    margin: 0;
-    font-family: system-ui;
-    background: linear-gradient(135deg, var(--bg1), var(--bg2));
-    color: var(--text);
-  }
+body {
+  margin: 0;
+  font-family: system-ui;
+  background: linear-gradient(135deg, var(--bg1), var(--bg2));
+  color: var(--text);
+}
 
-  .container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 40px;
-  }
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px;
+}
 
-  h1 {
-    text-align: center;
-    font-size: 2.4rem;
-    color: var(--accent);
-    margin-bottom: 6px;
-  }
+h1 {
+  text-align: center;
+  font-size: 2.4rem;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
 
-  /* NEW SUMMARY BOX */
+.subtitle{
+  text-align:center;
+  opacity:.75;
+  margin-bottom: 26px;
+}
 
-  .summaryBox{
-    margin-top:30px;
-    padding:20px;
-    border-radius:16px;
-    background: rgba(102,192,244,0.08);
-    border: 1px solid rgba(102,192,244,0.25);
-    display:none;
-    font-size:0.98rem;
-    line-height:1.7;
-    backdrop-filter: blur(6px);
-    animation: fadeIn .4s ease;
-  }
+.search {
+  margin-top: 20px;
+}
 
-  @keyframes fadeIn{
-    from { opacity:0; transform:translateY(6px); }
-    to { opacity:1; transform:translateY(0); }
-  }
+input {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
 
+.controls{
+  margin-top: 18px;
+  display:flex;
+  align-items:center;
+  gap: 14px;
+}
+
+.controls label{
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 75px;
+}
+
+.controls input[type="range"]{
+  width: 100%;
+}
+
+.controls .count{
+  width: 40px;
+  text-align:right;
+  font-weight: 800;
+  color: var(--muted);
+}
+
+button {
+  width: 100%;
+  margin-top: 16px;
+  padding: 14px;
+  background: var(--accent2);
+  border: none;
+  border-radius: 10px;
+  font-weight: 800;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.status {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  color: var(--muted);
+  min-height: 22px;
+}
+
+/* NEW AI SUMMARY BOX */
+.summaryBox{
+  margin-top: 30px;
+  padding: 22px;
+  border-radius: 14px;
+  border: 1px solid rgba(102,192,244,0.25);
+  background: rgba(42,71,94,0.55);
+  backdrop-filter: blur(6px);
+  line-height: 1.6;
+  display: none;
+  font-size: 0.95rem;
+}
+
+.summaryBox strong{
+  color: #fff;
+  display: block;
+  margin-bottom: 6px;
+  font-size: 1rem;
+}
+
+/* ===== ORIGINAL GRID + CARDS ===== */
+
+.grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: rgba(42,71,94,0.5);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(102,192,244,0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+.card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  background: #111;
+}
+
+.content {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.title {
+  font-weight: 900;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.score {
+  background: var(--accent);
+  color: var(--bg1);
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  margin-bottom: 10px;
+  font-weight: 900;
+}
+
+.meta {
+  font-size: 0.9rem;
+  color: #a8b5c2;
+  margin-bottom: 10px;
+}
+
+.desc {
+  font-size: 0.92rem;
+  color: var(--text);
+  opacity: 0.9;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.reason {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;   
+  padding-top: 12px;  
+}
+
+.actions a {
+  flex: 1;
+  text-align: center;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 0.92rem;
+}
+
+.actions a.primary {
+  background: var(--accent2);
+  color: var(--bg1);
+}
+
+.actions a.secondary {
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
+}
+
+/* ===== ORIGINAL MODAL ===== */
+
+.modalOverlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.65);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding: 20px;
+  z-index: 9999;
+}
+
+.modal{
+  width: min(1100px, 96vw);
+  max-height: 92vh;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(18,22,28,.92);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
+  display:flex;
+  flex-direction: column;
+}
+
+.modalHeader{
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.modalTitle{
+  font-weight: 900;
+  font-size: 1.05rem;
+  color: #fff;
+  margin-right: 12px;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.closeBtn{
+  border:none;
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  font-weight: 900;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor:pointer;
+  width: fit-content;
+}
+
+/* keep the rest of your modal/gallery CSS exactly as before */
 
 </style>
 
