@@ -37,6 +37,12 @@ h1 {
   margin-bottom: 6px;
 }
 
+.subtitle{
+  text-align:center;
+  opacity:.75;
+  margin-bottom: 26px;
+}
+
 .search {
   margin-top: 20px;
 }
@@ -84,12 +90,11 @@ button {
   font-weight: 800;
   cursor: pointer;
   font-size: 1rem;
-  transition: 0.2s ease;
 }
 
-button:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .status {
@@ -98,40 +103,6 @@ button:hover{
   color: var(--muted);
   min-height: 22px;
 }
-
-/* ==============================
-   AI SUMMARY (NEW FEATURE)
-================================ */
-
-.summaryBox{
-  margin-top: 30px;
-  padding: 22px;
-  border-radius: 16px;
-  border: 1px solid rgba(102,192,244,0.25);
-  background: rgba(42,71,94,0.55);
-  backdrop-filter: blur(6px);
-  line-height: 1.6;
-  display: none;
-  font-size: 0.96rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,.25);
-  animation: fadeIn .35s ease;
-}
-
-.summaryBox strong{
-  display:block;
-  font-size:1.05rem;
-  margin-bottom:6px;
-  color:#fff;
-}
-
-@keyframes fadeIn{
-  from { opacity:0; transform:translateY(6px); }
-  to { opacity:1; transform:translateY(0); }
-}
-
-/* ==============================
-   GRID + CARDS
-================================ */
 
 .grid {
   margin-top: 40px;
@@ -142,19 +113,18 @@ button:hover{
 
 .card {
   background: rgba(42,71,94,0.5);
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(102,192,244,0.15);
+
   display: flex;
   flex-direction: column;
-  position: relative;
-  transition: all 0.25s ease;
 }
 
+
 .card:hover{
-  transform: translateY(-4px);
-  box-shadow: 0 18px 45px rgba(0,0,0,.35);
-  border-color: rgba(102,192,244,.35);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
 }
 
 .card img {
@@ -165,53 +135,60 @@ button:hover{
 }
 
 .content {
-  padding: 16px;
+  padding: 14px;
+
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 6px;
 }
+
 
 .title {
   font-weight: 900;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
   color: #fff;
+  line-height: 1.2;
 }
 
 .score {
   background: var(--accent);
   color: var(--bg1);
   display: inline-block;
-  padding: 5px 12px;
+  padding: 4px 10px;
   border-radius: 999px;
   font-size: 0.82rem;
+  margin-bottom: 10px;
   font-weight: 900;
 }
 
 .meta {
   font-size: 0.9rem;
   color: #a8b5c2;
+  margin-bottom: 10px;
 }
 
 .desc {
   font-size: 0.92rem;
   color: var(--text);
   opacity: 0.9;
-  line-height: 1.45;
+  line-height: 1.4;
+  margin-bottom: 10px;
 }
 
 .reason {
   font-size: 0.82rem;
   color: var(--muted);
-  margin-top: 4px;
+  margin-bottom: 12px;
 }
 
 .actions {
   display: flex;
   gap: 10px;
-  margin-top: auto;
-  padding-top: 14px;
+  margin-top: auto;   
+  padding-top: 12px;  
 }
+
 
 .actions a {
   flex: 1;
@@ -221,7 +198,6 @@ button:hover{
   text-decoration: none;
   font-weight: 900;
   font-size: 0.92rem;
-  transition: 0.2s ease;
 }
 
 .actions a.primary {
@@ -229,23 +205,14 @@ button:hover{
   color: var(--bg1);
 }
 
-.actions a.primary:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0,0,0,.3);
-}
-
 .actions a.secondary {
   background: rgba(255,255,255,0.08);
   color: var(--text);
 }
 
-.actions a.secondary:hover{
-  background: rgba(255,255,255,0.14);
-}
-
-/* ==============================
+/* 
    MODAL
-================================ */
+ */
 
 .modalOverlay{
   position: fixed;
@@ -264,26 +231,29 @@ button:hover{
   overflow: hidden;
   border-radius: 16px;
   border: 1px solid rgba(255,255,255,.12);
-  background: rgba(18,22,28,.95);
+  background: rgba(18,22,28,.92);
   backdrop-filter: blur(10px);
-  box-shadow: 0 25px 70px rgba(0,0,0,.6);
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
   display:flex;
   flex-direction: column;
-  animation: fadeIn .25s ease;
 }
 
 .modalHeader{
   display:flex;
   justify-content: space-between;
   align-items:center;
-  padding: 16px;
+  padding: 14px 16px;
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
 .modalTitle{
   font-weight: 900;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   color: #fff;
+  margin-right: 12px;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .closeBtn{
@@ -291,22 +261,31 @@ button:hover{
   background: rgba(255,255,255,.08);
   color: #fff;
   font-weight: 900;
-  padding: 10px 16px;
+  padding: 10px 14px;
   border-radius: 10px;
   cursor:pointer;
-  transition: 0.2s ease;
+  width: fit-content;
 }
 
-.closeBtn:hover{
-  background: rgba(255,255,255,.18);
+.modalBody{
+  display:grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 16px;
+  padding: 16px;
+  overflow:auto;
 }
 
-/* Gallery */
+@media (max-width: 900px){
+  .modalBody{
+    grid-template-columns: 1fr;
+  }
+}
 
 .gallery{
   position: relative;
   border-radius: 14px;
   overflow:hidden;
+  border: 1px solid rgba(255,255,255,.08);
   background: #0b0f14;
 }
 
@@ -314,28 +293,42 @@ button:hover{
   width: 100%;
   height: 520px;
   object-fit: cover;
+  display:block;
 }
+
+@media (max-width: 900px){
+  .gallery img{
+    height: 320px;
+  }
+}
+
+
 
 .navBtn{
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  
   width: 46px;
   height: 46px;
+  padding: 0;
+
   border: 1px solid rgba(255,255,255,.14);
   background: rgba(0,0,0,.55);
   color: #fff;
+
   font-size: 20px;
   font-weight: 900;
+
   border-radius: 999px;
   cursor: pointer;
+  user-select: none;
+
   display: grid;
   place-items: center;
+
   transition: 0.2s ease;
 }
-
-.navBtn.left{ left: 14px; }
-.navBtn.right{ right: 14px; }
 
 .navBtn:hover{
   background: rgba(0,0,0,.75);
@@ -343,6 +336,14 @@ button:hover{
   border-color: rgba(102,192,244,.55);
   color: var(--accent2);
 }
+
+.navBtn:active{
+  transform: translateY(-50%) scale(0.96);
+}
+
+.navBtn.left{ right: 14px; }
+.navBtn.right{ left: 14px; }
+
 
 .dots{
   position:absolute;
@@ -368,20 +369,6 @@ button:hover{
   background: var(--accent2);
 }
 
-.modalBody{
-  display:grid;
-  grid-template-columns: 1.7fr 1fr;
-  gap: 16px;
-  padding: 16px;
-  overflow:auto;
-}
-
-@media (max-width: 900px){
-  .modalBody{
-    grid-template-columns: 1fr;
-  }
-}
-
 .details{
   border-radius: 14px;
   border: 1px solid rgba(255,255,255,.08);
@@ -404,35 +391,31 @@ button:hover{
   text-decoration:none;
 }
 
-.details a:hover{
-  text-decoration: underline;
-}
+.details a:hover{ text-decoration: underline; }
 
-/* ==============================
-   GAME AI REASON (MODAL)
-================================ */
-
-.gameSummaryBox{
-  margin-top: 18px;
-  padding: 16px;
+/* AI Explanation Box */
+.ai-box{
+  margin-top: 24px;
+  padding: 18px;
   border-radius: 14px;
-  border: 1px solid rgba(102,192,244,0.25);
+  border: 1px solid rgba(102,192,244,0.18);
   background: rgba(42,71,94,0.45);
   backdrop-filter: blur(6px);
-  line-height: 1.55;
-  font-size: 0.92rem;
-  box-shadow: 0 10px 25px rgba(0,0,0,.25);
-  animation: fadeIn .25s ease;
 }
 
-.gameSummaryBox strong{
-  display:block;
-  margin-bottom:6px;
-  color:#fff;
-  font-size:1rem;
+.ai-box h3{
+  margin-top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  font-weight: 900;
+}
+
+.ai-box p{
+  margin: 10px 0 0 0;
+  line-height: 1.5;
+  opacity: .95;
 }
 </style>
-
 </head>
 
 <body>
@@ -442,7 +425,9 @@ button:hover{
       <h1>🎮 SteamSAGE</h1>
       <h3>Search Games in your style...</h3>
     </center>
+    
   </div>
+  
   
   <div class="search">
     <input id="query" placeholder="e.g. open world survival crafting game">
@@ -457,16 +442,16 @@ button:hover{
     <div class="status" id="status"></div>
   </div>
 
-  <!-- ai summary -->
-  <div id="summaryBox" class="summaryBox"></div>
+  <div id="globalAIBox" style="display:none;"></div>
 
   <div class="grid" id="results"></div>
 </div>
 
-<!-- modal -->
+<!-- MODAL -->
 <div class="modalOverlay" id="modalOverlay">
   <div class="modal">
     <div class="modalHeader">
+      
       <div class="modalTitle" id="modalTitle">Game</div>
       <button class="closeBtn" id="closeModal">Close ✕</button>
     </div>
@@ -476,6 +461,7 @@ button:hover{
         <button class="navBtn left" id="nextBtn">⟶</button>
         <img id="galleryImg" src="" alt="Screenshot">
         <button class="navBtn right" id="prevBtn">⟵</button>
+
         <div class="dots" id="dots"></div>
       </div>
 
@@ -489,7 +475,6 @@ const btn = document.getElementById("btn");
 const queryInput = document.getElementById("query");
 const statusEl = document.getElementById("status");
 const resultsEl = document.getElementById("results");
-const summaryBox = document.getElementById("summaryBox");
 
 const topk = document.getElementById("topk");
 const topkVal = document.getElementById("topkVal");
@@ -508,8 +493,9 @@ function safeText(s){
   return (s ?? "").toString();
 }
 
-/* Modal / gallery */
-
+/* 
+   MODAL / GALLERY LOGIC
+ */
 const modalOverlay = document.getElementById("modalOverlay");
 const closeModalBtn = document.getElementById("closeModal");
 const modalTitle = document.getElementById("modalTitle");
@@ -528,6 +514,7 @@ function openModal(game){
 
   modalTitle.textContent = game.name || "Game";
 
+  // screenshots fallback: if none, use header_image
   const shots = Array.isArray(game.screenshots) && game.screenshots.length
     ? game.screenshots
     : (game.header_image ? [game.header_image] : []);
@@ -557,14 +544,17 @@ function renderGallery(){
     return;
   }
 
+  // clamp index
   if (currentIndex < 0) currentIndex = shots.length - 1;
   if (currentIndex >= shots.length) currentIndex = 0;
 
   galleryImg.src = shots[currentIndex];
 
+  // show/hide nav
   prevBtn.style.display = shots.length > 1 ? "block" : "none";
   nextBtn.style.display = shots.length > 1 ? "block" : "none";
 
+  // dots
   dotsEl.innerHTML = shots.slice(0, 12).map((_, i) => `
     <div class="dot ${i === currentIndex ? "active" : ""}" data-i="${i}"></div>
   `).join("");
@@ -578,30 +568,41 @@ function renderDetails(){
   const genre = g.primary_genre || "";
   const sentiment = (g.avg_sentiment_score != null) ? g.avg_sentiment_score.toFixed(2) : "";
   const desc = safeText(g.short_description || g.description).trim();
-  const aiReason = safeText(g.ai_reason || "");
+
   detailsBox.innerHTML = `
     <div class="line"><strong>Match:</strong> ${score}%</div>
     ${price ? `<div class="line"><strong>Price:</strong> ${price}</div>` : ""}
     ${genre ? `<div class="line"><strong>Genre:</strong> ${genre}</div>` : ""}
-    ${sentiment ? `<div class="line"><strong>Sentiment Score:</strong> ${sentiment} / 5 ⭐</div>` : ""}
+    ${sentiment ? `<div class="line"><strong>Sentiment Score:</strong>  ${sentiment} / 5 ⭐</div>` : ""}
     ${desc ? `<div class="line"><strong>Description:</strong><br>${desc}</div>` : ""}
     <div class="line" style="margin-top:14px;">
-      <div class="actions">
-        ${g.steam_url ? `<a class="primary" href="${g.steam_url}" target="_blank">View on Steam</a>` : ""}
-        <a class="secondary" href="https://www.youtube.com/results?search_query=${encodeURIComponent((g.name||"") + " gameplay")}" target="_blank">Gameplay</a>
-      </div>
+    <div class="actions">
+      ${g.steam_url ? `
+        <a class="primary" href="${g.steam_url}" target="_blank">
+          View on Steam
+        </a>
+      ` : ""}
+
+      <a class="secondary"
+        href="https://www.youtube.com/results?search_query=${encodeURIComponent((g.name||"") + " gameplay")}"
+        target="_blank">
+        Gameplay
+      </a>
     </div>
-    ${aiReason ? `
-      <div class="gameSummaryBox">
-        <strong>Why this game?</strong>
-        ${aiReason}
-      </div>
-    ` : ""}
+  </div>
+
   `;
 }
 
-prevBtn.addEventListener("click", () => { currentIndex--; renderGallery(); });
-nextBtn.addEventListener("click", () => { currentIndex++; renderGallery(); });
+prevBtn.addEventListener("click", () => {
+  currentIndex--;
+  renderGallery();
+});
+
+nextBtn.addEventListener("click", () => {
+  currentIndex++;
+  renderGallery();
+});
 
 dotsEl.addEventListener("click", (e) => {
   const dot = e.target.closest(".dot");
@@ -611,16 +612,41 @@ dotsEl.addEventListener("click", (e) => {
 });
 
 closeModalBtn.addEventListener("click", closeModal);
-modalOverlay.addEventListener("click", (e) => { if (e.target === modalOverlay) closeModal(); });
 
+modalOverlay.addEventListener("click", (e) => {
+  if (e.target === modalOverlay) closeModal();
+});
+
+// keyboard support
 document.addEventListener("keydown", (e) => {
   if (modalOverlay.style.display !== "flex") return;
+
   if (e.key === "Escape") closeModal();
   if (e.key === "ArrowLeft") { currentIndex--; renderGallery(); }
   if (e.key === "ArrowRight") { currentIndex++; renderGallery(); }
 });
 
-/* search */
+// swipe support (mobile)
+let touchStartX = null;
+galleryImg.addEventListener("touchstart", (e) => {
+  touchStartX = e.touches[0].clientX;
+}, {passive:true});
+
+galleryImg.addEventListener("touchend", (e) => {
+  if (touchStartX == null) return;
+  const endX = e.changedTouches[0].clientX;
+  const dx = endX - touchStartX;
+  touchStartX = null;
+
+  if (Math.abs(dx) < 40) return;
+  if (dx > 0) currentIndex--;
+  else currentIndex++;
+  renderGallery();
+}, {passive:true});
+
+/*
+   SEARCH LOGIC
+ */
 
 async function runSearch() {
   const query = queryInput.value.trim();
@@ -629,7 +655,6 @@ async function runSearch() {
   btn.disabled = true;
   statusEl.textContent = "🔍 Searching…";
   resultsEl.innerHTML = "";
-  summaryBox.style.display = "none";
 
   try {
     const res = await fetch("/search", {
@@ -641,21 +666,33 @@ async function runSearch() {
     const raw = await res.text();
     if (!res.ok) throw new Error(raw || "Backend error");
 
-    const data = JSON.parse(raw);
+    const response = JSON.parse(raw);
 
-    if (!data.results || !Array.isArray(data.results) || data.results.length === 0) {
+    if (!response.results || !response.results.length) {
       statusEl.textContent = "No results found.";
       return;
     }
 
-    statusEl.textContent = `Found ${data.results.length} games`;
+    const data = response.results;
 
-    if (data.global_summary) {
-      summaryBox.innerHTML = `<strong>Why these games?</strong><br>${data.global_summary}`;
-      summaryBox.style.display = "block";
+    statusEl.textContent = `Found ${data.length} games`;
+
+    // Global AI Summary
+    const globalBox = document.getElementById("globalAIBox");
+
+    if (response.global_summary) {
+      globalBox.innerHTML = `
+        <div class="ai-box">
+          <h3>Why these games?</h3>
+          <p>${response.global_summary}</p>
+        </div>
+      `;
+      globalBox.style.display = "block";
+    } else {
+      globalBox.style.display = "none";
     }
 
-    resultsEl.innerHTML = data.results.map((g, idx) => {
+    resultsEl.innerHTML = data.map((g, idx) => {
       const score = ((g.similarity_score || 0) * 100).toFixed(1);
       const price = formatPrice(g.price, g.currency);
       const genre = g.primary_genre ? `🎭 ${g.primary_genre}` : "";
@@ -679,6 +716,13 @@ async function runSearch() {
 
             ${desc ? `<div class="desc">${desc}</div>` : ""}
 
+            ${g.ai_reason ? `
+                <div class="ai-box">
+                  <h3>Why this game?</h3>
+                  <p>${g.ai_reason}</p>
+                </div>
+            ` : ""}
+
             ${g.match_reason?.length ? `
               <div class="reason">Matched: ${g.match_reason.join(", ")}</div>
             ` : ""}
@@ -692,10 +736,11 @@ async function runSearch() {
       `;
     }).join("");
 
+    // click card => open modal with screenshots
     document.querySelectorAll(".card").forEach(card => {
       card.addEventListener("click", () => {
         const idx = Number(card.dataset.idx);
-        openModal(data.results[idx]);
+        openModal(data[idx]);
       });
     });
 
