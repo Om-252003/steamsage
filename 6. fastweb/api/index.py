@@ -1,6 +1,5 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse, Response
-from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import List, Optional, Any, Dict
 from functools import lru_cache
@@ -18,10 +17,6 @@ HF_SPACE = os.getenv("HF_SPACE", "Om-2003/steam-game-search-ui")
 app = FastAPI(title="Steam Semantic Search API")
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-STATIC_DIR = BASE_DIR / "static"
-
-app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
 
 @app.get("/", response_class=HTMLResponse)
