@@ -722,13 +722,6 @@ async function runSearch() {
 
             ${desc ? `<div class="desc">${desc}</div>` : ""}
 
-            ${g.ai_reason ? `
-                <div class="ai-box">
-                  <h3>Why this game?</h3>
-                  <p>${g.ai_reason}</p>
-                </div>
-            ` : ""}
-
             ${g.match_reason?.length ? `
               <div class="reason">Matched: ${g.match_reason.join(", ")}</div>
             ` : ""}
